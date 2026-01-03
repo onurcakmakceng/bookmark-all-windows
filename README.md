@@ -70,3 +70,8 @@ Works with all Chromium-based browsers:
 
 Licensed under the [AGPL-3.0](LICENSE)
 
+## Terms of Use & Privacy
+
+- [Terms of Use](TERMS.md)
+- [Privacy Policy](privacy.html)
+
