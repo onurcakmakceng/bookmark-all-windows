@@ -61,5 +61,5 @@ Works with all Chromium-based browsers:
 
 ## License
 
-MIT
+Licensed under the [AGPL-3.0](LICENSE)
 
