@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmark All Windows</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">📚</div>
+      <h1>Bookmark All Windows</h1>
+    </header>
+    
+    <div class="stats" id="stats">
+      <div class="stat-item">
+        <span class="stat-number" id="windowCount">-</span>
+        <span class="stat-label">Windows</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="tabCount">-</span>
+        <span class="stat-label">Tabs</span>
+      </div>
+    </div>
+
+    <div class="options">
+      <label class="option-row">
+        <span>Folder name prefix:</span>
+        <input type="text" id="folderPrefix" value="Session" placeholder="Session">
+      </label>
+    </div>
+
+    <button id="bookmarkBtn" class="primary-btn">
+      <span class="btn-icon">🔖</span>
+      <span class="btn-text">Bookmark All Windows</span>
+    </button>
+
+    <div id="status" class="status hidden"></div>
+
+    <div id="progress" class="progress-container hidden">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <span class="progress-text" id="progressText">0%</span>
+    </div>
+
+    <div id="result" class="result hidden"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+
