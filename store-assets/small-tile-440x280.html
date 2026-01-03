@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Small Tile - 440x280</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      width: 440px;
+      height: 280px;
+      overflow: hidden;
+    }
+    .tile {
+      width: 440px;
+      height: 280px;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+    .tile::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 70% 50%, rgba(249, 115, 22, 0.2) 0%, transparent 50%);
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .icon {
+      font-size: 72px;
+      filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.4));
+    }
+    .text h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #fff 0%, #fb923c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text p {
+      font-size: 14px;
+      color: #8b949e;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="tile">
+    <div class="content">
+      <span class="icon">📚</span>
+      <div class="text">
+        <h2>Bookmark All Windows</h2>
+        <p>Save all tabs from all windows<br>with a single click</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Screenshot 1 - 1280x800</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      font-family: 'Outfit', sans-serif;
+      width: 1280px;
+      height: 800px;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .screenshot {
+      width: 1280px;
+      height: 800px;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #0d1117 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+    }
+    .screenshot::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(249, 115, 22, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(251, 146, 60, 0.1) 0%, transparent 40%);
+    }
+    .text-content {
+      max-width: 450px;
+      position: relative;
+      z-index: 1;
+    }
+    .main-title {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .main-subtitle {
+      font-size: 20px;
+      color: #8b949e;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    .feature-list {
+      list-style: none;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      color: #f0f6fc;
+      margin-bottom: 12px;
+    }
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(249, 115, 22, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .browser-mockup {
+      width: 380px;
+      background: #161b22;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(249, 115, 22, 0.2);
+      position: relative;
+      z-index: 1;
+      border: 1px solid #30363d;
+    }
+    .browser-header {
+      background: #21262d;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #30363d;
+    }
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .browser-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .browser-dot.red { background: #f85149; }
+    .browser-dot.yellow { background: #f0c000; }
+    .browser-dot.green { background: #3fb950; }
+    .browser-tabs {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+      margin-left: 12px;
+    }
+    .browser-tab {
+      background: #161b22;
+      padding: 6px 12px;
+      border-radius: 6px 6px 0 0;
+      font-size: 11px;
+      color: #f0f6fc;
+    }
+    .popup-content {
+      padding: 24px;
+    }
+    .popup-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #30363d;
+    }
+    .popup-logo {
+      font-size: 32px;
+      filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.3));
+    }
+    .popup-title {
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #f0f6fc 0%, #fb923c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .popup-stats {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-box {
+      flex: 1;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-number {
+      display: block;
+      font-size: 28px;
+      font-weight: 700;
+      color: #f97316;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: #8b949e;
+      text-transform: uppercase;
+    }
+    .popup-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #8b949e;
+    }
+    .popup-input {
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #f0f6fc;
+      font-size: 13px;
+      width: 140px;
+    }
+    .popup-btn {
+      width: 100%;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .popup-btn.primary {
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+    }
+    .popup-btn.danger {
+      background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="screenshot">
+    <div class="text-content">
+      <h2 class="main-title">Bookmark All Windows</h2>
+      <p class="main-subtitle">Save every tab from every window with a single click. Never lose your browsing session again.</p>
+      <ul class="feature-list">
+        <li><span class="feature-icon">📁</span> Organized folders per window</li>
+        <li><span class="feature-icon">⏱️</span> Timestamped for easy tracking</li>
+        <li><span class="feature-icon">🎯</span> Custom folder prefixes</li>
+        <li><span class="feature-icon">⚡</span> Lightning fast operation</li>
+      </ul>
+    </div>
+    <div class="browser-mockup">
+      <div class="browser-header">
+        <div class="browser-dots">
+          <span class="browser-dot red"></span>
+          <span class="browser-dot yellow"></span>
+          <span class="browser-dot green"></span>
+        </div>
+        <div class="browser-tabs">
+          <span class="browser-tab">Extension</span>
+        </div>
+      </div>
+      <div class="popup-content">
+        <div class="popup-header">
+          <span class="popup-logo">📚</span>
+          <span class="popup-title">Bookmark All Windows</span>
+        </div>
+        <div class="popup-stats">
+          <div class="stat-box">
+            <span class="stat-number">5</span>
+            <span class="stat-label">Windows</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">47</span>
+            <span class="stat-label">Tabs</span>
+          </div>
+        </div>
+        <div class="popup-options">
+          <span>Folder name prefix:</span>
+          <input class="popup-input" value="Session" readonly>
+        </div>
+        <button class="popup-btn primary">
+          <span>🔖</span>
+          <span>Bookmark All Windows</span>
+        </button>
+        <button class="popup-btn danger">
+          <span>✕</span>
+          <span>Close All Other Windows</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

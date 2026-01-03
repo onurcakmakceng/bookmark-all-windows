@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marquee - 1400x560</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      width: 1400px;
+      height: 560px;
+      overflow: hidden;
+    }
+    .marquee {
+      width: 1400px;
+      height: 560px;
+      background: linear-gradient(135deg, #0a0a14 0%, #0f0f1a 30%, #1a1a2e 70%, #0d1117 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 100px;
+    }
+    .marquee::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(circle at 15% 40%, rgba(249, 115, 22, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 85% 60%, rgba(251, 146, 60, 0.1) 0%, transparent 35%);
+    }
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .text {
+      max-width: 600px;
+    }
+    .title {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 22px;
+      color: #8b949e;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .features {
+      display: flex;
+      gap: 24px;
+    }
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      color: #f0f6fc;
+    }
+    .feature-icon {
+      color: #f97316;
+      font-size: 20px;
+    }
+    .illustration {
+      position: relative;
+      width: 500px;
+      height: 400px;
+    }
+    .window-card {
+      position: absolute;
+      background: #161b22;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+    .window-header {
+      background: #21262d;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .window-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .window-content {
+      padding: 12px;
+    }
+    .window-tab {
+      background: #0d1117;
+      border-radius: 4px;
+      padding: 6px 10px;
+      margin-bottom: 6px;
+      font-size: 10px;
+      color: #8b949e;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .window-tab::before {
+      content: '🌐';
+      font-size: 10px;
+    }
+    .window-1 {
+      width: 200px;
+      top: 20px;
+      left: 0;
+      z-index: 1;
+    }
+    .window-2 {
+      width: 220px;
+      top: 80px;
+      left: 120px;
+      z-index: 2;
+    }
+    .window-3 {
+      width: 180px;
+      top: 160px;
+      left: 260px;
+      z-index: 3;
+    }
+    .bookmark-result {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #161b22;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      padding: 16px;
+      width: 180px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(249, 115, 22, 0.1);
+    }
+    .bookmark-title {
+      font-size: 12px;
+      color: #f97316;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .bookmark-folder {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      font-size: 11px;
+      color: #f0f6fc;
+    }
+    .bookmark-folder-icon {
+      color: #f97316;
+    }
+  </style>
+</head>
+<body>
+  <div class="marquee">
+    <div class="content">
+      <div class="text">
+        <h2 class="title">Bookmark All Windows</h2>
+        <p class="subtitle">Stop losing your browsing sessions. Save every tab from every window with a single click.</p>
+        <div class="features">
+          <span class="feature">
+            <span class="feature-icon">✓</span>
+            Organized folders
+          </span>
+          <span class="feature">
+            <span class="feature-icon">✓</span>
+            Timestamped
+          </span>
+          <span class="feature">
+            <span class="feature-icon">✓</span>
+            Custom names
+          </span>
+        </div>
+      </div>
+      <div class="illustration">
+        <div class="window-card window-1">
+          <div class="window-header">
+            <span class="window-dot" style="background: #f85149;"></span>
+            <span class="window-dot" style="background: #f0c000;"></span>
+            <span class="window-dot" style="background: #3fb950;"></span>
+          </div>
+          <div class="window-content">
+            <div class="window-tab">GitHub - Project</div>
+            <div class="window-tab">Stack Overflow</div>
+            <div class="window-tab">Documentation</div>
+          </div>
+        </div>
+        <div class="window-card window-2">
+          <div class="window-header">
+            <span class="window-dot" style="background: #f85149;"></span>
+            <span class="window-dot" style="background: #f0c000;"></span>
+            <span class="window-dot" style="background: #3fb950;"></span>
+          </div>
+          <div class="window-content">
+            <div class="window-tab">YouTube - Tutorial</div>
+            <div class="window-tab">Twitter</div>
+            <div class="window-tab">Reddit</div>
+            <div class="window-tab">News Site</div>
+          </div>
+        </div>
+        <div class="window-card window-3">
+          <div class="window-header">
+            <span class="window-dot" style="background: #f85149;"></span>
+            <span class="window-dot" style="background: #f0c000;"></span>
+            <span class="window-dot" style="background: #3fb950;"></span>
+          </div>
+          <div class="window-content">
+            <div class="window-tab">Gmail</div>
+            <div class="window-tab">Calendar</div>
+          </div>
+        </div>
+        <div class="bookmark-result">
+          <div class="bookmark-title">
+            <span>📁</span> Other Bookmarks
+          </div>
+          <div class="bookmark-folder">
+            <span class="bookmark-folder-icon">📁</span>
+            Session_Window-1
+          </div>
+          <div class="bookmark-folder">
+            <span class="bookmark-folder-icon">📁</span>
+            Session_Window-2
+          </div>
+          <div class="bookmark-folder">
+            <span class="bookmark-folder-icon">📁</span>
+            Session_Window-3
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

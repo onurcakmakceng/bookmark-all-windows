@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chrome Web Store Assets - Bookmark All Windows</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #1a1a2e;
+      color: #fff;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #f97316;
+    }
+
+    .info {
+      text-align: center;
+      color: #8b949e;
+      margin-bottom: 40px;
+    }
+
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      color: #fb923c;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .asset-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .asset-wrapper {
+      background: #0d1117;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #30363d;
+    }
+
+    .asset-label {
+      font-size: 12px;
+      color: #6e7681;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .screenshot-1280x800 {
+      width: 1280px;
+      height: 800px;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #0d1117 100%);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+    }
+
+    .screenshot-1280x800::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(249, 115, 22, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(251, 146, 60, 0.1) 0%, transparent 40%);
+    }
+
+    .browser-mockup {
+      width: 380px;
+      background: #161b22;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(249, 115, 22, 0.2);
+      position: relative;
+      z-index: 1;
+      border: 1px solid #30363d;
+    }
+
+    .browser-header {
+      background: #21262d;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .browser-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .browser-dot.red { background: #f85149; }
+    .browser-dot.yellow { background: #f0c000; }
+    .browser-dot.green { background: #3fb950; }
+
+    .browser-tabs {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+      margin-left: 12px;
+    }
+
+    .browser-tab {
+      background: #0d1117;
+      padding: 6px 12px;
+      border-radius: 6px 6px 0 0;
+      font-size: 11px;
+      color: #8b949e;
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .browser-tab.active {
+      background: #161b22;
+      color: #f0f6fc;
+    }
+
+    .popup-content {
+      padding: 24px;
+    }
+
+    .popup-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .popup-logo {
+      font-size: 32px;
+      filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.3));
+    }
+
+    .popup-title {
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #f0f6fc 0%, #fb923c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .popup-stats {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-box {
+      flex: 1;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: #f97316;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #8b949e;
+      text-transform: uppercase;
+    }
+
+    .popup-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #8b949e;
+    }
+
+    .popup-input {
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #f0f6fc;
+      font-size: 13px;
+      width: 140px;
+    }
+
+    .popup-btn {
+      width: 100%;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .popup-btn.primary {
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+    }
+
+    .popup-btn.danger {
+      background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+      color: white;
+    }
+
+    .popup-result {
+      margin-top: 16px;
+      padding: 16px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+    }
+
+    .popup-result h3 {
+      font-size: 14px;
+      color: #3fb950;
+      margin-bottom: 12px;
+    }
+
+    .result-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px solid #30363d;
+      font-size: 12px;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .folder-icon {
+      color: #f97316;
+    }
+
+    .tab-count {
+      color: #6e7681;
+      margin-left: auto;
+    }
+
+    .text-content {
+      max-width: 450px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .main-title {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .main-subtitle {
+      font-size: 20px;
+      color: #8b949e;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      color: #f0f6fc;
+      margin-bottom: 12px;
+    }
+
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(249, 115, 22, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .small-tile-440x280 {
+      width: 440px;
+      height: 280px;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .small-tile-440x280::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 70% 50%, rgba(249, 115, 22, 0.2) 0%, transparent 50%);
+    }
+
+    .small-tile-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .small-icon {
+      font-size: 72px;
+      filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.4));
+    }
+
+    .small-text h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #fff 0%, #fb923c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .small-text p {
+      font-size: 14px;
+      color: #8b949e;
+      line-height: 1.5;
+    }
+
+    .marquee-1400x560 {
+      width: 1400px;
+      height: 560px;
+      background: linear-gradient(135deg, #0a0a14 0%, #0f0f1a 30%, #1a1a2e 70%, #0d1117 100%);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 100px;
+    }
+
+    .marquee-1400x560::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 15% 40%, rgba(249, 115, 22, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 85% 60%, rgba(251, 146, 60, 0.1) 0%, transparent 35%);
+    }
+
+    .marquee-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .marquee-text {
+      max-width: 600px;
+    }
+
+    .marquee-title {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .marquee-subtitle {
+      font-size: 22px;
+      color: #8b949e;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .marquee-features {
+      display: flex;
+      gap: 24px;
+    }
+
+    .marquee-feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      color: #f0f6fc;
+    }
+
+    .marquee-feature-icon {
+      color: #f97316;
+      font-size: 20px;
+    }
+
+    .marquee-mockup {
+      transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 80px rgba(249, 115, 22, 0.15);
+    }
+
+    .windows-illustration {
+      position: relative;
+      width: 500px;
+      height: 400px;
+    }
+
+    .window-card {
+      position: absolute;
+      background: #161b22;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .window-card-header {
+      background: #21262d;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .window-card-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .window-card-content {
+      padding: 12px;
+    }
+
+    .window-card-tab {
+      background: #0d1117;
+      border-radius: 4px;
+      padding: 6px 10px;
+      margin-bottom: 6px;
+      font-size: 10px;
+      color: #8b949e;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .window-card-tab::before {
+      content: '🌐';
+      font-size: 10px;
+    }
+
+    .window-1 {
+      width: 200px;
+      top: 20px;
+      left: 0;
+      z-index: 1;
+    }
+
+    .window-2 {
+      width: 220px;
+      top: 80px;
+      left: 120px;
+      z-index: 2;
+    }
+
+    .window-3 {
+      width: 180px;
+      top: 160px;
+      left: 260px;
+      z-index: 3;
+    }
+
+    .arrow-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    .arrow-indicator svg {
+      width: 60px;
+      height: 60px;
+      fill: #f97316;
+      filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.5));
+    }
+
+    .bookmark-result {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #161b22;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      padding: 16px;
+      width: 180px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(249, 115, 22, 0.1);
+    }
+
+    .bookmark-result-title {
+      font-size: 12px;
+      color: #f97316;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bookmark-folder {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      font-size: 11px;
+      color: #f0f6fc;
+    }
+
+    .bookmark-folder-icon {
+      color: #f97316;
+    }
+
+    .screenshot-2 {
+      flex-direction: column;
+      gap: 40px;
+      padding: 60px;
+    }
+
+    .screenshot-2-title {
+      font-size: 42px;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .flow-icon-box {
+      width: 120px;
+      height: 120px;
+      background: #21262d;
+      border: 2px solid #30363d;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      transition: all 0.3s ease;
+    }
+
+    .flow-icon-box.highlight {
+      border-color: #f97316;
+      box-shadow: 0 0 30px rgba(249, 115, 22, 0.3);
+    }
+
+    .flow-label {
+      font-size: 16px;
+      color: #8b949e;
+      text-align: center;
+    }
+
+    .flow-arrow {
+      font-size: 32px;
+      color: #f97316;
+    }
+
+    .screenshot-3 {
+      padding: 60px;
+    }
+
+    .screenshot-3-content {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 550px;
+    }
+
+    .feature-card {
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: #f97316;
+      box-shadow: 0 0 30px rgba(249, 115, 22, 0.2);
+    }
+
+    .feature-card-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .feature-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #f0f6fc;
+      margin-bottom: 8px;
+    }
+
+    .feature-card-desc {
+      font-size: 13px;
+      color: #8b949e;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chrome Web Store Assets</h1>
+  <p class="info">Right-click and "Save image as..." or use a screenshot tool to capture each asset</p>
+
+  <div class="section">
+    <h2 class="section-title">📸 Screenshot 1 - Main View (1280x800)</h2>
+    <div class="asset-container">
+      <div class="asset-wrapper">
+        <div class="asset-label">1280 × 800 px</div>
+        <div class="screenshot-1280x800">
+          <div class="text-content">
+            <h2 class="main-title">Bookmark All Windows</h2>
+            <p class="main-subtitle">Save every tab from every window with a single click. Never lose your browsing session again.</p>
+            <ul class="feature-list">
+              <li><span class="feature-icon">📁</span> Organized folders per window</li>
+              <li><span class="feature-icon">⏱️</span> Timestamped for easy tracking</li>
+              <li><span class="feature-icon">🎯</span> Custom folder prefixes</li>
+              <li><span class="feature-icon">⚡</span> Lightning fast operation</li>
+            </ul>
+          </div>
+          <div class="browser-mockup">
+            <div class="browser-header">
+              <div class="browser-dots">
+                <span class="browser-dot red"></span>
+                <span class="browser-dot yellow"></span>
+                <span class="browser-dot green"></span>
+              </div>
+              <div class="browser-tabs">
+                <span class="browser-tab active">Extension</span>
+              </div>
+            </div>
+            <div class="popup-content">
+              <div class="popup-header">
+                <span class="popup-logo">📚</span>
+                <span class="popup-title">Bookmark All Windows</span>
+              </div>
+              <div class="popup-stats">
+                <div class="stat-box">
+                  <span class="stat-number">5</span>
+                  <span class="stat-label">Windows</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-number">47</span>
+                  <span class="stat-label">Tabs</span>
+                </div>
+              </div>
+              <div class="popup-options">
+                <span>Folder name prefix:</span>
+                <input class="popup-input" value="Session" readonly>
+              </div>
+              <button class="popup-btn primary">
+                <span>🔖</span>
+                <span>Bookmark All Windows</span>
+              </button>
+              <button class="popup-btn danger">
+                <span>✕</span>
+                <span>Close All Other Windows</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">📸 Screenshot 2 - How It Works (1280x800)</h2>
+    <div class="asset-container">
+      <div class="asset-wrapper">
+        <div class="asset-label">1280 × 800 px</div>
+        <div class="screenshot-1280x800 screenshot-2">
+          <h2 class="screenshot-2-title">How It Works</h2>
+          <div class="flow-diagram">
+            <div class="flow-step">
+              <div class="flow-icon-box">🪟</div>
+              <span class="flow-label">Multiple<br>Windows</span>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">
+              <div class="flow-icon-box highlight">📚</div>
+              <span class="flow-label">One Click<br>Extension</span>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">
+              <div class="flow-icon-box">📁</div>
+              <span class="flow-label">Organized<br>Folders</span>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">
+              <div class="flow-icon-box">✅</div>
+              <span class="flow-label">Session<br>Saved!</span>
+            </div>
+          </div>
+          <div class="popup-result" style="position: relative; width: 400px; margin-top: 20px;">
+            <h3>✅ Created 3 folders with 47 bookmarks</h3>
+            <div class="result-item">
+              <span class="folder-icon">📁</span>
+              <span>Session_2026-01-03_15-30_Window-1</span>
+              <span class="tab-count">18 tabs</span>
+            </div>
+            <div class="result-item">
+              <span class="folder-icon">📁</span>
+              <span>Session_2026-01-03_15-30_Window-2</span>
+              <span class="tab-count">15 tabs</span>
+            </div>
+            <div class="result-item">
+              <span class="folder-icon">📁</span>
+              <span>Session_2026-01-03_15-30_Window-3</span>
+              <span class="tab-count">14 tabs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">📸 Screenshot 3 - Features (1280x800)</h2>
+    <div class="asset-container">
+      <div class="asset-wrapper">
+        <div class="asset-label">1280 × 800 px</div>
+        <div class="screenshot-1280x800 screenshot-3">
+          <div class="screenshot-3-content">
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-card-icon">📁</div>
+                <div class="feature-card-title">Organized Folders</div>
+                <div class="feature-card-desc">Each window gets its own folder with all tabs neatly organized</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon">⏱️</div>
+                <div class="feature-card-title">Timestamped</div>
+                <div class="feature-card-desc">Automatic timestamps make it easy to find your sessions</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon">🏷️</div>
+                <div class="feature-card-title">Custom Prefix</div>
+                <div class="feature-card-desc">Name your sessions with custom folder prefixes</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon">📊</div>
+                <div class="feature-card-title">Live Stats</div>
+                <div class="feature-card-desc">See window and tab counts before saving</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon">🚫</div>
+                <div class="feature-card-title">Smart Filtering</div>
+                <div class="feature-card-desc">Automatically skips internal browser pages</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon">⚡</div>
+                <div class="feature-card-title">Lightning Fast</div>
+                <div class="feature-card-desc">Saves hundreds of tabs in seconds</div>
+              </div>
+            </div>
+            <div class="browser-mockup" style="transform: scale(0.9);">
+              <div class="browser-header">
+                <div class="browser-dots">
+                  <span class="browser-dot red"></span>
+                  <span class="browser-dot yellow"></span>
+                  <span class="browser-dot green"></span>
+                </div>
+                <div class="browser-tabs">
+                  <span class="browser-tab active">Extension</span>
+                </div>
+              </div>
+              <div class="popup-content">
+                <div class="popup-header">
+                  <span class="popup-logo">📚</span>
+                  <span class="popup-title">Bookmark All Windows</span>
+                </div>
+                <div class="popup-stats">
+                  <div class="stat-box">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Windows</span>
+                  </div>
+                  <div class="stat-box">
+                    <span class="stat-number">124</span>
+                    <span class="stat-label">Tabs</span>
+                  </div>
+                </div>
+                <div class="popup-options">
+                  <span>Folder name prefix:</span>
+                  <input class="popup-input" value="Work" readonly>
+                </div>
+                <button class="popup-btn primary">
+                  <span>🔖</span>
+                  <span>Bookmark All Windows</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🎨 Small Promotional Tile (440x280)</h2>
+    <div class="asset-container">
+      <div class="asset-wrapper">
+        <div class="asset-label">440 × 280 px</div>
+        <div class="small-tile-440x280">
+          <div class="small-tile-content">
+            <span class="small-icon">📚</span>
+            <div class="small-text">
+              <h2>Bookmark All Windows</h2>
+              <p>Save all tabs from all windows<br>with a single click</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">🖼️ Marquee Promotional Tile (1400x560)</h2>
+    <div class="asset-container">
+      <div class="asset-wrapper">
+        <div class="asset-label">1400 × 560 px</div>
+        <div class="marquee-1400x560">
+          <div class="marquee-content">
+            <div class="marquee-text">
+              <h2 class="marquee-title">Bookmark All Windows</h2>
+              <p class="marquee-subtitle">Stop losing your browsing sessions. Save every tab from every window with a single click.</p>
+              <div class="marquee-features">
+                <span class="marquee-feature">
+                  <span class="marquee-feature-icon">✓</span>
+                  Organized folders
+                </span>
+                <span class="marquee-feature">
+                  <span class="marquee-feature-icon">✓</span>
+                  Timestamped
+                </span>
+                <span class="marquee-feature">
+                  <span class="marquee-feature-icon">✓</span>
+                  Custom names
+                </span>
+              </div>
+            </div>
+            <div class="windows-illustration">
+              <div class="window-card window-1">
+                <div class="window-card-header">
+                  <span class="window-card-dot" style="background: #f85149;"></span>
+                  <span class="window-card-dot" style="background: #f0c000;"></span>
+                  <span class="window-card-dot" style="background: #3fb950;"></span>
+                </div>
+                <div class="window-card-content">
+                  <div class="window-card-tab">GitHub - Project</div>
+                  <div class="window-card-tab">Stack Overflow</div>
+                  <div class="window-card-tab">Documentation</div>
+                </div>
+              </div>
+              <div class="window-card window-2">
+                <div class="window-card-header">
+                  <span class="window-card-dot" style="background: #f85149;"></span>
+                  <span class="window-card-dot" style="background: #f0c000;"></span>
+                  <span class="window-card-dot" style="background: #3fb950;"></span>
+                </div>
+                <div class="window-card-content">
+                  <div class="window-card-tab">YouTube - Tutorial</div>
+                  <div class="window-card-tab">Twitter</div>
+                  <div class="window-card-tab">Reddit</div>
+                  <div class="window-card-tab">News Site</div>
+                </div>
+              </div>
+              <div class="window-card window-3">
+                <div class="window-card-header">
+                  <span class="window-card-dot" style="background: #f85149;"></span>
+                  <span class="window-card-dot" style="background: #f0c000;"></span>
+                  <span class="window-card-dot" style="background: #3fb950;"></span>
+                </div>
+                <div class="window-card-content">
+                  <div class="window-card-tab">Gmail</div>
+                  <div class="window-card-tab">Calendar</div>
+                </div>
+              </div>
+              <div class="bookmark-result">
+                <div class="bookmark-result-title">
+                  <span>📁</span> Other Bookmarks
+                </div>
+                <div class="bookmark-folder">
+                  <span class="bookmark-folder-icon">📁</span>
+                  Session_Window-1
+                </div>
+                <div class="bookmark-folder">
+                  <span class="bookmark-folder-icon">📁</span>
+                  Session_Window-2
+                </div>
+                <div class="bookmark-folder">
+                  <span class="bookmark-folder-icon">📁</span>
+                  Session_Window-3
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
