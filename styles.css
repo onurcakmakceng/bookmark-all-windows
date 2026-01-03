@@ -124,7 +124,14 @@ h1 {
   box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
-.primary-btn {
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.primary-btn,
+.danger-btn {
   width: 100%;
   display: flex;
   align-items: center;
@@ -151,9 +158,24 @@ h1 {
   transform: translateY(0);
 }
 
-.primary-btn:disabled {
+.primary-btn:disabled,
+.danger-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.danger-btn {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.danger-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(220, 38, 38, 0.4);
+}
+
+.danger-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .btn-icon {

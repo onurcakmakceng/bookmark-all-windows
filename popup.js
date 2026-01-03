@@ -3,6 +3,7 @@ class BookmarkAllWindows {
     this.windowCountEl = document.getElementById('windowCount');
     this.tabCountEl = document.getElementById('tabCount');
     this.bookmarkBtn = document.getElementById('bookmarkBtn');
+    this.closeBtn = document.getElementById('closeBtn');
     this.folderPrefixInput = document.getElementById('folderPrefix');
     this.statusEl = document.getElementById('status');
     this.progressContainer = document.getElementById('progress');
@@ -16,6 +17,7 @@ class BookmarkAllWindows {
   async init() {
     await this.updateStats();
     this.bookmarkBtn.addEventListener('click', () => this.bookmarkAllWindows());
+    this.closeBtn.addEventListener('click', () => this.closeAllWindows());
   }
 
   async updateStats() {
@@ -74,8 +76,13 @@ class BookmarkAllWindows {
     return rootChildren.find(n => n.id === '2') || rootChildren[1];
   }
 
+  setButtonsDisabled(disabled) {
+    this.bookmarkBtn.disabled = disabled;
+    this.closeBtn.disabled = disabled;
+  }
+
   async bookmarkAllWindows() {
-    this.bookmarkBtn.disabled = true;
+    this.setButtonsDisabled(true);
     this.resultEl.classList.add('hidden');
     this.hideStatus();
     this.showProgress();
@@ -87,7 +94,7 @@ class BookmarkAllWindows {
       if (normalWindows.length === 0) {
         this.showStatus('No windows found to bookmark.', 'error');
         this.hideProgress();
-        this.bookmarkBtn.disabled = false;
+        this.setButtonsDisabled(false);
         return;
       }
 
@@ -142,7 +149,39 @@ class BookmarkAllWindows {
       console.error('Bookmark error:', error);
     }
 
-    this.bookmarkBtn.disabled = false;
+    this.setButtonsDisabled(false);
+  }
+
+  async closeAllWindows() {
+    this.setButtonsDisabled(true);
+    this.resultEl.classList.add('hidden');
+    this.hideStatus();
+
+    try {
+      const currentWindowId = (await chrome.windows.getCurrent()).id;
+      const windows = await chrome.windows.getAll({ populate: true });
+      const normalWindows = windows.filter(w => w.type === 'normal');
+      const windowsToClose = normalWindows.filter(w => w.id !== currentWindowId);
+
+      if (windowsToClose.length === 0) {
+        this.showStatus('No other windows to close.', 'info');
+        this.setButtonsDisabled(false);
+        return;
+      }
+
+      for (const window of windowsToClose) {
+        await chrome.windows.remove(window.id);
+      }
+
+      this.showStatus(`Closed ${windowsToClose.length} windows!`, 'success');
+      await this.updateStats();
+
+    } catch (error) {
+      this.showStatus(`Error: ${error.message}`, 'error');
+      console.error('Close error:', error);
+    }
+
+    this.setButtonsDisabled(false);
   }
 
   showResults(results) {
@@ -167,4 +206,3 @@ class BookmarkAllWindows {
 document.addEventListener('DOMContentLoaded', () => {
   new BookmarkAllWindows();
 });
-
